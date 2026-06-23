@@ -204,6 +204,24 @@ npm start
 * API Documentation with Swagger
 
 ---
+## Screenshots
+
+### User Login
+
+![User Registration](screenshots/createUser.png)
+
+### Create Subscription
+
+![Create Subscription](screenshots/createSubscription.png)
+
+### Email Reminder
+
+![Email Reminder](screenshots/emailUsingNodemailer.png)
+
+### MongoDB Collection
+
+![MongoDB Collection](screenshots/mongodbUsers.png)
+![MongoDB Collection](screenshots/mondodbSubscriptions.png)
 
 ## Author
 
