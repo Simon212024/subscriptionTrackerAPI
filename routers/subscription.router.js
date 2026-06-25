@@ -1,6 +1,9 @@
 import { Router } from "express";
 import authorise from "../middlewares/auth.middleware.js";
-import { createSubscription, getUserSubscriptions } from "../controllers/subscription.controller.js";
+import { cancelSubscription, createSubscription, deleteSubscription, getSubscription,
+     getUpcomingRenewals,
+     getUserSubscriptions, updateSubscription
+     } from "../controllers/subscription.controller.js";
 
 const subscriptionRouter = Router();
 
@@ -9,32 +12,20 @@ subscriptionRouter.get('/',(req,res)=>{
 
 });
 
-subscriptionRouter.get('/:id',(req,res)=>{
-    res.send({title:'Get a subscription details'})
-
-});
+subscriptionRouter.get('/:id',authorise,getSubscription);
 
 subscriptionRouter.post('/',authorise,createSubscription);
 //subscriptionRouter.post('/',createSubscription);
 
 
-subscriptionRouter.put('/:id',(req,res)=>{
-    res.send({title:' Update subscription details'})
-});
+subscriptionRouter.put('/:id',authorise,updateSubscription);
 
-subscriptionRouter.delete('/:id',(req,res)=>{
-    res.send({title:'Delete a subscription'})
-});
+subscriptionRouter.delete('/:id',deleteSubscription);
 
 subscriptionRouter.get('/user/:id',authorise,getUserSubscriptions);
 
-subscriptionRouter.put('/:id/cancel',(req,res)=>{
-    res.send({title:'Cancel a subscription'})
+subscriptionRouter.put('/:id/cancel',authorise,cancelSubscription);
 
-});
-
-subscriptionRouter.get('/upcoming-renewals',(req,res)=>{
-    res.send({title:'Get upcoming renewals'})
-});
+subscriptionRouter.get('/upcoming-renewals',getUpcomingRenewals);
 
 export default subscriptionRouter;
